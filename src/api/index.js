@@ -44,5 +44,14 @@ export const reqWeather = (city) => {
     })
 }
 
+//获取分类列表
+export const reqCategorys = () => ajax.get('/manage/category/list')
+
+//添加分类
+export const reqAddCategory = (categoryName) => ajax.post('/manage/category/add', { categoryName })
+
+//更新分类
+export const reqUpdateCategory = ({ categoryName, categoryId }) => ajax.post('/manage/category/update', { categoryName, categoryId })
+
 
 

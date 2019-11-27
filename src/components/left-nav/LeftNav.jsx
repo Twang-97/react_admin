@@ -92,7 +92,7 @@ class LeftNav extends Component {
     componentDidMount:在render()渲染一次之后在执行，只执行一次，用来执行异步操作，发送ajax，开启定时器等
     componentWillMount:在render()渲染之前执行，只执行一次
     */
-    componentWillMount() {
+    UNSAFE_componentWillMount() {
         this.menuNodes = this.getMenuNodes(menuList)
     }
 
