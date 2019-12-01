@@ -1,42 +1,47 @@
 # 接口文档
 
 ## 目录：
-	1). 登陆
-	2). 添加用户
-	3). 更新用户
-	4). 获取所有用户列表
-	5). 删除用户
-	6). 获取一级或某个二级分类列表
-	7). 添加分类
-	8). 更新品类名称
-	9). 根据分类ID获取分类
-	10). 获取商品分页列表
-	11). 根据ID/Name搜索产品分页列表
-	12). 添加商品
-	13). 更新商品
-	14). 对商品进行上架/下架处理
-	15). 上传图片
-	16). 删除图片
-	17). 添加角色
-	18). 获取角色列表
-	19). 更新角色(给角色设置权限)
-	20). 获取天气信息(支持jsonp)
+
+    1). 登陆
+    2). 添加用户
+    3). 更新用户
+    4). 获取所有用户列表
+    5). 删除用户
+    6). 获取一级或某个二级分类列表
+    7). 添加分类
+    8). 更新品类名称
+    9). 根据分类ID获取分类
+    10). 获取商品分页列表
+    11). 根据ID/Name搜索产品分页列表
+    12). 添加商品
+    13). 更新商品
+    14). 对商品进行上架/下架处理
+    15). 上传图片
+    16). 删除图片
+    17). 添加角色
+    18). 获取角色列表
+    19). 更新角色(给角色设置权限)
+    20). 获取天气信息(支持jsonp)
 
 ## 1. 登陆
 
-### 请求URL：
-	http://localhost:5000/login
+### 请求 URL：
+
+    http://localhost:5000/login
 
 ### 请求方式：
-	POST
+
+    POST
 
 ### 参数类型
-	|参数		|是否必选 |类型     |说明
-	|username    |Y       |string   |用户名
-	|password    |Y       |string   |密码
+
+    |参数		|是否必选 |类型     |说明
+    |username    |Y       |string   |用户名
+    |password    |Y       |string   |密码
 
 ### 返回示例：
-	成功:
+
+    成功:
       {
         "status": 0,
         "data": {
@@ -50,31 +55,35 @@
           }
         }
       }
-	失败
-	  {
+    失败
+      {
         "status": 1,
         "msg": "用户名或密码不正确!"
       }
 
 ## 2. 添加用户
 
-### 请求URL：
-	http://localhost:5000/manage/user/add
+### 请求 URL：
+
+    http://localhost:5000/manage/user/add
 
 ### 请求方式：
-	POST
+
+    POST
 
 ### 参数类型
-	|参数		|是否必选 |类型     |说明
-	|username    |Y       |string   |用户名
-	|password    |Y       |string   |密码
-	|phone       |N       |string   |手机号
-	|email       |N       |string   |邮箱
-	|role_id     |N       |string   |角色ID
+
+    |参数		|是否必选 |类型     |说明
+    |username    |Y       |string   |用户名
+    |password    |Y       |string   |密码
+    |phone       |N       |string   |手机号
+    |email       |N       |string   |邮箱
+    |role_id     |N       |string   |角色ID
 
 ### 返回示例：
-	成功:
-	  {
+
+    成功:
+      {
         "status": 0,
         "data": {
           "_id": "5c3b382c82a14446f4ffb647",
@@ -86,31 +95,35 @@
           "__v": 0
         }
       }
-	失败
-	  {
+    失败
+      {
         "status": 1,
         "msg": "此用户已存在"
       }
 
 ## 3. 更新用户
-### 请求URL：
-	http://localhost:5000/manage/user/update
+
+### 请求 URL：
+
+    http://localhost:5000/manage/user/update
 
 ### 请求方式：
-	POST
+
+    POST
 
 ### 参数类型
 
-	|参数		|是否必选 |类型     |说明
-	|_id         |Y       |string   |ID
+    |参数		|是否必选 |类型     |说明
+    |_id         |Y       |string   |ID
     |username    |N       |string   |用户名
     |phone       |N       |string   |手机号
     |email       |N       |string   |邮箱
     |role_id     |N       |string   |角色ID
 
 ### 返回示例：
-	成功:
-	  {
+
+    成功:
+      {
         "status": 0,
         "data": {
           "_id": "5c3b382c82a14446f4ffb647",
@@ -122,99 +135,112 @@
           "__v": 0
         }
       }
-	失败
-	  {
+    失败
+      {
         "status": 1,
         "msg": "此用户已存在"
       }
-    
+
 ## 4. 获取所有用户列表
-### 请求URL：
-	http://localhost:5000/manage/user/list
+
+### 请求 URL：
+
+    http://localhost:5000/manage/user/list
 
 ### 请求方式：
-	GET
 
-### 参数类型: 
-	无
-
-### 返回示例：
-    {
-	  "status": 0,
-	  "data": {
-	    "users": [
-	      {
-	        "_id": "5cb05b4db6ed8c44f42c9af2",
-	        "username": "test",
-	        "password": "202cb962ac59075b964b07152d234b70",
-	        "phone": "123412342134",
-	        "email": "sd",
-	        "role_id": "5ca9eab0b49ef916541160d4",
-	        "create_time": 1555061581734,
-	        "__v": 0
-	      },
-	      {
-	        "_id": "5cb05b69b6ed8c44f42c9af3",
-	        "username": "ss22",
-	        "password": "123",
-	        "phone": "23343",
-	        "email": "df",
-	        "role_id": "5caf5444c61376319cef80a8",
-	        "create_time": 1555061609666,
-	        "__v": 0
-	      }
-	    ],
-	    "roles": [
-	      {
-	        "menus": [
-	          "/home",
-	          "/role",
-	          "/category",
-	          "/products",
-	          "/product",
-	          "/charts/bar"
-	        ],
-	        "_id": "5ca9eaa1b49ef916541160d3",
-	        "name": "测试",
-	        "create_time": 1554639521749,
-	        "__v": 0,
-	        "auth_time": 1555145863489,
-	        "auth_name": "admin"
-	      }
-	    ]
-	  }
-	}
-
-## 5. 删除用户
-### 请求URL：
-	http://localhost:5000/manage/user/delete
-
-### 请求方式：
-	POST
+    GET
 
 ### 参数类型:
 
-	|参数		|是否必选 |类型     |说明
-	|userId     |Y       |string   |用户ID
+    无
 
 ### 返回示例：
-	{
-	  "status": 0
-	}
 
-## 6. 获取一级或某个二级分类列表
-### 请求URL：
-	http://localhost:5000/manage/category/list
+    {
+      "status": 0,
+      "data": {
+        "users": [
+          {
+            "_id": "5cb05b4db6ed8c44f42c9af2",
+            "username": "test",
+            "password": "202cb962ac59075b964b07152d234b70",
+            "phone": "123412342134",
+            "email": "sd",
+            "role_id": "5ca9eab0b49ef916541160d4",
+            "create_time": 1555061581734,
+            "__v": 0
+          },
+          {
+            "_id": "5cb05b69b6ed8c44f42c9af3",
+            "username": "ss22",
+            "password": "123",
+            "phone": "23343",
+            "email": "df",
+            "role_id": "5caf5444c61376319cef80a8",
+            "create_time": 1555061609666,
+            "__v": 0
+          }
+        ],
+        "roles": [
+          {
+            "menus": [
+              "/home",
+              "/role",
+              "/category",
+              "/products",
+              "/product",
+              "/charts/bar"
+            ],
+            "_id": "5ca9eaa1b49ef916541160d3",
+            "name": "测试",
+            "create_time": 1554639521749,
+            "__v": 0,
+            "auth_time": 1555145863489,
+            "auth_name": "admin"
+          }
+        ]
+      }
+    }
+
+## 5. 删除用户
+
+### 请求 URL：
+
+    http://localhost:5000/manage/user/delete
 
 ### 请求方式：
-	GET
+
+    POST
+
+### 参数类型:
+
+    |参数		|是否必选 |类型     |说明
+    |userId     |Y       |string   |用户ID
+
+### 返回示例：
+
+    {
+      "status": 0
+    }
+
+## 6. 获取一级或某个二级分类列表
+
+### 请求 URL：
+
+    http://localhost:5000/manage/category/list
+
+### 请求方式：
+
+    GET
 
 ### 参数类型: query
 
-	|参数		|是否必选 |类型     |说明
-	|parentId    |Y       |string   |父级分类的ID
+    |参数		|是否必选 |类型     |说明
+    |parentId    |Y       |string   |父级分类的ID
 
 ### 返回示例：
+
     一级分类:
       {
         "status": 0,
@@ -257,13 +283,17 @@
           }
         ]
       }
-  
-      
+
+
+
 ## 7. 添加分类
-### 请求URL：
+
+### 请求 URL：
+
     http://localhost:5000/manage/category/add
 
 ### 请求方式：
+
     POST
 
 ### 参数类型:
@@ -273,6 +303,7 @@
     |categoryName  |Y       |string   |名称
 
 ### 返回示例：
+
     添加一级分类:
         {
           "status": 0,
@@ -293,13 +324,16 @@
             "__v": 0
           }
         }
-          
+
 
 ## 8. 更新品类名称
-### 请求URL：
+
+### 请求 URL：
+
     http://localhost:5000/manage/category/update
 
 ### 请求方式：
+
     POST
 
 ### 参数类型:
@@ -309,16 +343,19 @@
     |categoryName  |Y       |string   |名称
 
 ### 返回示例：
+
     {
       "status": 0
     }
 
+## 9. 根据分类 ID 获取分类
 
-## 9. 根据分类ID获取分类
-### 请求URL：
+### 请求 URL：
+
     http://localhost:5000/manage/category/info
 
 ### 请求方式：
+
     GET
 
 ### 参数类型:
@@ -327,6 +364,7 @@
     |categoryId    |Y       |string   |父级分类的ID
 
 ### 返回示例：
+
     {
       "status": 0,
       "data": {
@@ -336,13 +374,15 @@
         "__v": 0
       }
     }
-    
 
 ## 10. 获取商品分页列表
-### 请求URL：
+
+### 请求 URL：
+
     http://localhost:5000/manage/product/list
 
 ### 请求方式：
+
     GET
 
 ### 参数类型:
@@ -352,6 +392,7 @@
     |pageSize   |Y       |Number   |每页条目数
 
 ### 返回示例：
+
     {
         "status": 0,
         "data": {
@@ -435,14 +476,18 @@
         }
     }
 
-## 11. 根据ID/Name搜索产品分页列表
-### 请求URL：
+## 11. 根据 ID/Name 搜索产品分页列表
+
+### 请求 URL：
+
     http://localhost:5000/manage/product/search?pageNum=1&pageSize=5&productName=T
 
 ### 请求方式：
+
     GET
 
 ### 参数类型:
+
     |参数		|是否必选 |类型     |说明
     |pageNum       |Y       |Number   |页码
     |pageSize      |Y       |Number   |每页条目数
@@ -450,6 +495,7 @@
     |productDesc   |N       |String   |根据商品描述搜索
 
 ### 返回示例：
+
     {
         "status": 0,
         "data": {
@@ -498,7 +544,7 @@
                     "price": 9999,
                     "pCategoryId": "5ca9d6c0b49ef916541160bb",
                     "categoryId": "5ca9db78b49ef916541160ca",
-                    "detail": "<p style=\"text-align:start;\"><span style=\"color: rgb(102,102,102);background-color: rgb(255,255,255);font-size: 16px;font-family: Arial, \"microsoft yahei;\">联想ThinkPad X1 Carbon 2018（09CD）英特尔酷睿i5 14英寸轻薄笔记本电脑（i5-8250U 8G 256GSSD FHD）黑色</span></p>\n<p><span style=\"color: rgb(228,57,60);background-color: rgb(255,255,255);font-size: 12px;font-family: tahoma, arial, \"Microsoft YaHei\", \"Hiragino Sans GB\", u5b8bu4f53, sans-serif;\">年度重量级新品，X390、T490全新登场 更加轻薄机身设计，全面的配置升级，让工作更便捷，让生活更轻松</span><a href=\"https://pro.jd.com/mall/active/2M4o7NTzHH6jEJXS7VbpbTAANQB9/index.html\" target=\"_blank\"><span style=\"color: rgb(94,105,173);background-color: rgb(255,255,255);font-size: 12px;font-family: tahoma, arial, \"Microsoft YaHei\", \"Hiragino Sans GB\", u5b8bu4f53, sans-serif;\">4月9日京东震撼首发，火爆预约</span></a>&nbsp;</p>\n",
+                    "detail": "<p style=\"text-align:start;\"><span style=\"color: rgb(102,102,102);background-color: rgb(255,255,255);font-size: 16px;font-family: Arial, \"microsoft yahei;\">联想ThinkPad X1 Carbon 2018（09CD）英特尔酷睿i5 14英寸轻薄笔记本电脑（i5-8250U 8G 256GSSD FHD）黑色</span></p>\n<p><span style=\"color: rgb(228,57,60);background-color: rgb(255,255,255);font-size: 12px;font-family: tahoma, arial, \"Microsoft YaHei\", \"Hiragino Sans GB\", u5b8bu4f53, sans-serif;\">年度重量级新品，X390、T490全新登场 更加轻薄机身设计，全面的配置升级，让工作更便捷，让生活更轻松</span><a href=\"https://pro.jd.com/mall/active/2M4o7NTzHH6jEJXS7VbpbTAANQB9/index.html\" target=\"_blank\"><span style=\"color: rgb(94,105,173);background-color: rgb(255,255,255);font-size: 12px;font-family: tah oma, arial, \"Microsoft YaHei\", \"Hiragino Sans GB\", u5b8bu4f53, sans-serif;\">4月9日京东震撼首发，火爆预约</span></a>&nbsp;</p>\n",
                     "__v": 0
                 }
             ]
@@ -506,13 +552,17 @@
     }
 
 ## 12. 添加商品
-### 请求URL：
+
+### 请求 URL：
+
     http://localhost:5000/manage/product/add
 
 ### 请求方式：
+
     POST
 
 ### 参数类型:
+
     |参数		       |是否必选 |类型     |说明
     |categoryId    |Y       |string   |分类ID
     |pCategoryId   |Y       |string   |父分类ID
@@ -523,6 +573,7 @@
     |imgs          |N       |array   |商品图片名数组
 
 ### 返回示例：
+
     {
         "status": 0,
         "data": {
@@ -542,13 +593,17 @@
     }
 
 ## 13. 更新商品
-### 请求URL：
+
+### 请求 URL：
+
     http://localhost:5000/manage/product/update
 
 ### 请求方式：
+
     POST
 
 ### 参数类型:
+
     |参数		       |是否必选 |类型     |说明
     |_id           |Y       |string   |商品ID
     |categoryId    |Y       |string   |分类ID
@@ -560,15 +615,19 @@
     |imgs          |N       |array   |商品图片名数组
 
 ### 返回示例：
+
     {
       "status": 0
     }
 
 ## 14. 对商品进行上架/下架处理
-### 请求URL：
+
+### 请求 URL：
+
     http://localhost:5000/manage/product/updateStatus
 
 ### 请求方式：
+
     POST
 
 ### 参数类型:
@@ -578,15 +637,19 @@
     |status       |Y       |number   |商品状态值
 
 ### 返回示例：
+
     {
       "status": 0
     }
 
 ## 15. 上传图片
-### 请求URL：
+
+### 请求 URL：
+
     http://localhost:5000/manage/img/upload
 
 ### 请求方式：
+
     POST
 
 ### 参数类型:
@@ -595,6 +658,7 @@
     |image  |Y       |文件   |图片文件
 
 ### 返回示例：
+
     {
         "status": 0,
         "data": {
@@ -604,10 +668,13 @@
     }
 
 ## 16. 删除图片
-### 请求URL：
+
+### 请求 URL：
+
     http://localhost:5000/manage/img/delete
 
 ### 请求方式：
+
     POST
 
 ### 参数类型:
@@ -616,23 +683,28 @@
     |name    |Y       |string   |图片文件名
 
 ### 返回示例：
+
     {
       "status": 0
     }
 
 ## 17. 添加角色
 
-### 请求URL：
+### 请求 URL：
+
     http://localhost:5000/manage/role/add
 
 ### 请求方式：
+
     POST
 
 ### 参数类型:
+
     |参数		     |是否必选 |类型     |说明
     |roleName    |Y       |string   |角色名称
 
 ### 返回示例：
+
     {
         "status": 0,
         "data": {
@@ -645,16 +717,21 @@
     }
 
 ## 18. 获取角色列表
-### 请求URL：
+
+### 请求 URL：
+
     http://localhost:5000/manage/role/list
 
 ### 请求方式：
+
     GET
 
-### 参数类型: 
+### 参数类型:
+
     无
 
 ### 返回示例：
+
     {
         "status": 0,
         "data": [
@@ -708,14 +785,17 @@
     }
 
 ## 19. 更新角色(给角色设置权限)
-### 请求URL：
+
+### 请求 URL：
+
     http://localhost:5000/manage/role/update
 
 ### 请求方式：
+
     POST
 
 ### 参数类型:
-  
+
     |参数		     |是否必选  |类型     |说明
     |_id          |Y       |string   |角色ID
     |menus        |Y       |array    |权限key数组
@@ -723,6 +803,7 @@
     |auth_name    |Y       |string   |权限人姓名
 
 ### 返回示例：
+
     {
         "status": 0,
         "data": {
@@ -742,20 +823,25 @@
         }
     }
 
-## 20. 获取天气信息(支持jsonp)
-### 请求URL：
+## 20. 获取天气信息(支持 jsonp)
+
+### 请求 URL：
+
     http://api.map.baidu.com/telematics/v3/weather
 
 ### 请求方式：
+
     GET
 
 ### 参数类型:
+
     |参数		     |是否必选 |类型     |说明
     |location    |Y       |string   |城市名称
     |output      |Y       |string   |返回数据格式: json
     |ak          |Y       |string   |唯一的应用key(3p49MVra6urFRGOT9s8UBWr2)
 
 ### 返回示例：
+
     {
       "error": 0,
       "status": "success",

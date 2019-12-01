@@ -13,6 +13,7 @@ export default class Category extends Component {
 
     //添加
     addFrom = () => {
+        this.category = {}
         this.setState({ showStatus: 1 })
     }
 

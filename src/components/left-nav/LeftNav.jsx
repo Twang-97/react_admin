@@ -100,6 +100,9 @@ class LeftNav extends Component {
         const openKey = this.openKey
         //得到请求路径
         let path = this.props.location.pathname
+        if (path.indexOf('/product') === 0) {
+            path = '/product'
+        }
         return (
             <div className="left-nav">
                 <Link className="left-nav-logo" to="/">
